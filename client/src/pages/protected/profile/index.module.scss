@@ -1,0 +1,34 @@
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    .section__title {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 2em;
+    }
+
+    .account__card {
+      background-color: #000;
+      padding: 1rem;
+      color: #fff;
+      text-align: center;
+      border-radius: 15px;
+
+      .account__btns {
+        display: flex;
+        margin-top: 1rem;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      h1 {
+        margin-top: 1rem;
+        font-size: 2em;
+      }
+      p {
+        margin-top: 1rem;
+      }
+    }
+
+  }

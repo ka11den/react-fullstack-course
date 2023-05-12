@@ -1,0 +1,127 @@
+.home__btns {
+  margin-top: 3rem;
+  position: relative;
+  display: block;
+  align-items: center;
+}
+
+.home__cards {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.home__cards_desc {
+  color: #fff;
+  font-size: .7em;
+  width: 84%;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+.home__btn_desc {
+  color: #fff;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  font-size: 1em;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.home__btn {
+  color: #000000;
+  padding: .7rem;
+  border-radius: 15px;
+  font-weight: 700;
+  background-color: #fff;
+  font-size: .9em;
+  position: relative;
+  z-index: 1;
+  transition: all .4s;
+}
+
+
+.home__btn:hover {
+  filter: invert(1);
+}
+
+.home__btn_subdesc {
+  color: #fff;
+  padding-left: 3.5rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.home__arrow_cards {
+  position: absolute;
+  top: 26px;
+  width: 62px;
+  left: -22px;
+}
+
+.home__card_img {
+  width: 80px;
+  z-index: 1;
+}
+
+.home__subdesc_data {
+  position: relative;
+  z-index: 1;
+}
+
+.home__card_img {
+  width: 80px;
+}
+
+@media screen and (min-width: 700px) and (max-width: 1000px){
+  .home__btns {
+    display: flex;
+  }
+  .home__arrow_cards {
+    position: absolute;
+    width: 30px;
+    top: 10px;
+    left: -15px;
+  }
+  .home__cards_desc {
+    color: #fff;
+    font-size: .7em;
+  }
+  .home__card_img {
+    width: 60px;
+  }
+  .home__btn_desc {
+    margin-left: 1rem;
+  }
+  .home__btn_subdesc {
+    font-size: .6em;
+    padding-left: 3.3rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .home__btn_desc {
+    font-size: 1.3em;
+    margin-left: 0rem;
+    margin-bottom: 0rem;
+  }
+  .home__arrow_cards {
+    width: 39px;
+  }
+  .home__cards_desc {
+    width: auto;
+    padding-top: 2rem;
+    font-size: .8em;
+  }
+  .home__cards {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+  .home__btns {
+    position: relative;
+    gap: 1rem;
+    display: flex;
+    margin-left: 1.5rem;
+    align-items: center;
+  }
+}

@@ -1,0 +1,12 @@
+.form {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .agreement {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}

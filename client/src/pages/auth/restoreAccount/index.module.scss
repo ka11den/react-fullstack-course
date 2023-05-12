@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    min-height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    .description {
+        text-align: center;
+        width: 360px;
+    }
+    .back_btn {
+        background-color: gray;
+        width: 300px;
+    }
+}

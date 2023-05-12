@@ -1,0 +1,9 @@
+.container {
+    position: relative;
+    max-width: 1400px;
+    margin-inline: 1.5rem;
+
+    @media screen and (min-width: 1400px) {
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,33 @@
+.input_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .input__btn_icon {
+        bottom: 21px;
+        right: 10px;
+        position: absolute;
+        background: none;
+    }
+    div {
+        input {
+            outline: 0;
+            position: relative;
+            font-size: 1em;
+            background-color:none;
+            height: 30px;
+            border: none;
+            border-bottom: 2px solid;
+            width: 100%;
+        }
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .error_msg {
+        position: absolute;
+        bottom: 0px;
+        font-size: 14px;
+        color: red;
+    }
+}

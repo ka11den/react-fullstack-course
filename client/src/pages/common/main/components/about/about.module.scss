@@ -1,0 +1,187 @@
+.about {
+  margin-top: 3rem;
+
+  .about__card_btn {
+    display: none;
+  }
+
+  .container {
+    .grid {
+      display: grid;
+    }
+
+    .about__card {
+      position: relative;
+      padding: 1rem;
+      background: radial-gradient(100% 511.26% at 99.27% 0%, #8F0410 0%, #000000 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+      box-shadow: 0px 0px 40px #000000;
+      color: #fff;
+      border-radius: 15px;
+    }
+
+    .about__signature {
+      width: 172px;
+      float: right;
+    }
+
+    .about__cards {
+      display: none;
+    }
+
+    .about__titles {
+      margin-bottom: 1rem;
+    }
+
+    .about__sub_title {
+      font-size: 1em;
+    }
+
+    .about__char {
+      font-size: 3em;
+      font-weight: 900;
+    }
+
+    .about__title {
+      font-size: 1.5em;
+    }
+
+    .about__desc {
+      margin-top: -1rem;
+      padding-left: 2rem;
+      font-weight: 500;
+      font-size: .6em;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .about__img {
+      width: 300px;
+      margin-top: -14rem;
+      z-index: 1;
+    }
+
+    .about__btn {
+      margin-top: 10rem;
+    }
+
+    .about__line {
+      display: none;
+    }
+
+    .about_btns {
+      display: none;
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 1000px){
+      .about__line {
+        position: absolute;
+        display: inline-flex;
+        top: 30px;
+        left: 163px;
+        width: 140px;
+        z-index: 0;
+      }
+      .about__container {
+        grid-template-columns: repeat(2, auto);
+      }
+      .about__title {
+        font-size: 1em;
+      }
+      .about__sub_title {
+        font-size: .7em;
+      }
+      .about__char {
+        font-size: 3em;
+      }
+      .about__titles {
+        margin-bottom: 1rem;
+      }
+      .about__desc {
+        font-size: .6em;
+        padding-left: 1rem;
+        margin-top: -2rem;
+      }
+      .about__img {
+        width: 300px;
+        margin-bottom: -1rem;
+        margin-top: -7rem;
+      }
+    }
+
+    @media screen and (min-width: 1100px) {
+      .about__container {
+        grid-template-columns: 450px 680px;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .about__img {
+        margin-top: -9rem;
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      .about__img {
+        width: 200px;
+        margin-top: -9rem;
+        z-index: 1;
+      }
+    }
+
+    @media screen and (min-width: 1000px) {
+      .about__img {
+        width: 475px;
+        margin-bottom: -1rem;
+        margin-left: -4rem;
+      }
+      .about__card_btn {
+        display: inline-block;
+      }
+      .about__line {
+        position: absolute;
+        display: inline-flex;
+        top: 20px;
+        left: 230px;
+        z-index: 0;
+      }
+      .about__cards {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .about__btn {
+        margin-top: 0;
+      }
+      .about_btns {
+        position: relative;
+        margin-top: 1rem;
+        gap: 1rem;
+        display: flex;
+        align-items: center;
+      }
+      .about__signature {
+        position: absolute;
+        right: 46px;
+        bottom: 35px;
+        width: 200px;
+      }
+
+      .about__title {
+        font-size: 2em;
+      }
+      .about__desc {
+        font-size: 1em;
+        margin-top: -4rem;
+        padding-left: 4rem;
+      }
+      .about__char {
+        font-size: 6em;
+      }
+      .about__content {
+        margin-left: 1rem;
+      }
+      .about__sub-title {
+        font-size: 1em;
+      }
+    }
+  }
+}

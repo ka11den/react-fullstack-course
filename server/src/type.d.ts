@@ -1,0 +1,1 @@
+type FileType = "video" | "preview";

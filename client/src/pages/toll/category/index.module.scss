@@ -1,0 +1,45 @@
+.container {
+    max-width: 1400px;
+    margin-inline: 1.5rem;
+
+    .section__title {
+        width: 1400px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 2em;
+    }
+
+    .section__desc {
+        margin-bottom: 1rem;
+    }
+
+    @media screen and (min-width: 1400px) {
+        margin: 0 auto;
+    }
+
+    .category__container {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+        gap: 2rem;
+    }
+
+    .category__card {
+        padding: 1rem;
+        border-radius: 15px;
+        border: #F01A33 2px solid;
+        width: 250px;
+        color: #ffff;
+        background-color: black;
+
+        .category__num {
+            font-size: 5em;
+            color: #AAAAAA;
+        }
+
+        .category__title {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 5rem;
+        }
+    }
+}

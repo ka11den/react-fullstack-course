@@ -1,0 +1,19 @@
+.btn {
+  cursor: pointer;
+  padding: 0.7rem;
+  border-radius: 15px;
+  font-weight: 700;
+  background-color: #fff;
+  font-size: 0.9em;
+  transition: all 0.4s;
+}
+
+.btn:hover {
+  filter: invert(1);
+}
+
+@media screen and (min-width: 1000px) {
+  .btn {
+    font-size: 1em;
+  }
+}

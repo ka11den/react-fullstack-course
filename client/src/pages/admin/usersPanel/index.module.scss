@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    min-height: calc(100vh - 170px);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    .titles {
+        width: 600px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: solid 1px black;
+        border-bottom: solid 1px black;
+    }
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .user {
+            width: 600px;
+            display: flex;
+            justify-content: space-between;
+            .paid {
+                color: rgb(104, 186, 104);
+            }
+            .not_paid {
+                color: rgb(204, 110, 110);
+            }
+            .banned {
+                background-color: rgb(204, 110, 110);
+            }
+        }
+    }
+}

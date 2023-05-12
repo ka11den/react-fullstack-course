@@ -1,0 +1,17 @@
+.section {
+  margin-top: 4rem;
+
+  .container {
+    max-width: 800px;
+    margin-inline: 1.5rem;
+
+    .oferta__title {
+      margin-bottom: 1rem;
+    }
+
+    @media screen and (min-width: 1000px) {
+      margin: 0 auto;
+    }
+  }
+
+}

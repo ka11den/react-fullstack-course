@@ -1,0 +1,41 @@
+.container {
+    max-width: 1400px;
+    margin-inline: 1.5rem;
+
+    .section__title {
+        width: 1400px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 2em;
+    }
+
+    .grid {
+        margin-top: 1rem;
+    }
+
+    .category__container {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 1rem;
+    }
+
+    .category__card {
+        display: grid;
+        padding: 1rem;
+        color: #fff;
+        gap: 2rem;
+        border-radius: 15px;
+        background-color: black;
+
+        .category__btns {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 1400px) {
+        margin: 0 auto;
+    }
+
+
+}
