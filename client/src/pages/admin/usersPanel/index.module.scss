@@ -1,12 +1,17 @@
 .container {
-    width: 100%;
-    min-height: calc(100vh - 170px);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    gap: 20px;
-    padding-top: 20px;
+    max-width: 1400px;
+    margin-inline: 1.5rem;
+
+    .section__title {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 2em;
+    }
+
+    @media screen and (min-width: 1400px) {
+        margin: 0 auto;
+    }
+
     .titles {
         width: 600px;
         height: 24px;
@@ -15,6 +20,14 @@
         justify-content: space-between;
         border-top: solid 1px black;
         border-bottom: solid 1px black;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table,th, td {
+        border:1px solid black;
     }
     .list {
         display: flex;

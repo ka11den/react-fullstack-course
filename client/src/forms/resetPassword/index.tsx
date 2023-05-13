@@ -4,11 +4,13 @@ import { Button } from "../../ui/button";
 
 import styles from "./index.module.scss"
 import { useEffect } from "react";
-import { useAppSelector } from "../../state/store";
-import { useNavigate } from "react-router";
+import { useActions, useAppSelector } from "../../state/store";
+import { useLocation, useNavigate } from "react-router";
 
 export function ResetPasswordForm() {
     const navigator = useNavigate();
+    const { pathname } = useLocation();
+    const { resetPassword } = useActions();
     const { isAuth } = useAppSelector((state) => state.user);
 
     const {
@@ -23,13 +25,13 @@ export function ResetPasswordForm() {
         name: "password"
     });
 
-    function onSubmit(data: any) {
-        console.log(data);
+    function onSubmit(form: any) {
+        resetPassword({ form, token: pathname.split("/").at(-1) as string});
     }
 
-    useEffect(() => {
-        isAuth && navigator("/");
-    }, [isAuth, navigator])
+    // useEffect(() => {
+    //     isAuth && navigator("/");
+    // }, [isAuth, navigator])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

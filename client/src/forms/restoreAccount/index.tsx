@@ -3,12 +3,13 @@ import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
 import styles from "./index.module.scss"
 import { useNavigate } from "react-router";
-import { useAppSelector } from "../../state/store";
+import { useActions, useAppSelector } from "../../state/store";
 import { useEffect } from "react";
 
 export function RestoreAccountForm() {
     const navigator = useNavigate();
-    const { isAuth } = useAppSelector((state) => state.user);
+    const { restoreAccaunt } = useActions();
+    const { isSuccess } = useAppSelector((state) => state.user);
     const {
         register,
         formState: { errors, isValid },
@@ -16,13 +17,13 @@ export function RestoreAccountForm() {
     } = useForm({ mode: "onChange" });
 
     function onSubmit(data: any) {
-        console.log(data);
-        navigator("/signin")
+        restoreAccaunt(data);
+        // navigator("/signin")
     }
 
-    useEffect(() => {
-        isAuth && navigator("/");
-    }, [isAuth, navigator])
+    // useEffect(() => {
+    //     isSuccess && navigator("/");
+    // }, [isSuccess, navigator])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

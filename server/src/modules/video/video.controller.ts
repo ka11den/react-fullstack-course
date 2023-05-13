@@ -10,7 +10,8 @@ import {
     Query,
     Res,
     UploadedFile,
-    UseGuards
+    UseGuards,
+    Param
 } from "@nestjs/common";
 
 import { VideoService } from "./video.service";
@@ -26,58 +27,59 @@ import { UuidDto } from "src/utils/global.dto";
 @Controller("video")
 export class VideoController {
     constructor(private readonly videoService: VideoService) {}
-    @Get()
-    @UseGuards(IsPayedGuard)
-    @UseGuards(IsAuthGuard)
-    public async findAll(@Query() { id: category_id }: UuidDto): Promise<Video[]> {
-        return await this.videoService.findAllVideosByCategory(category_id);
-    }
 
     @Get("file")
     @UseGuards(IsPayedGuard)
     @UseGuards(IsAuthGuard)
-    public findOneFile(@Query() { id, type }: UuidDto & { type: FileType }, @Res() res: Response): void {
-        this.videoService.findOneFileById(id, type, res);
+    public findOneFile(@Query() { id }: UuidDto, @Res() res: Response): void {
+        this.videoService.findOneFileById(id, res);
     }
 
-    @Post()
+    @Get("all/:id")
+    @UseGuards(IsPayedGuard)
+    @UseGuards(IsAuthGuard)
+    public async findAll(@Param() { id: category_id }: UuidDto): Promise<Video[]> {
+        return await this.videoService.findAllVideosByCategory(category_id);
+    }
+
+    @Get(":id")
+    @UseGuards(IsPayedGuard)
+    @UseGuards(IsAuthGuard)
+    public async findVideoById(@Param() { id }: UuidDto): Promise<Video> {
+        return await this.videoService.findOneVideoById(id);
+    }
+
+    @Post(":id")
     @UseGuards(IsAdminGuard)
     @UseGuards(IsAuthGuard)
-    @UseInterceptors(
-        FileFieldsInterceptor([
-            { name: "preview", maxCount: 1 },
-            { name: "video", maxCount: 1 }
-        ])
-    )
+    @UseInterceptors(FileInterceptor("video"))
     public async createVideo(
-        @UploadedFiles() files: { preview?: Express.Multer.File[]; video?: Express.Multer.File[] },
-        @Body() video: CreateVideoDto
+        @Param() { id: category_id }: UuidDto,
+        @UploadedFile() video: Express.Multer.File,
+        @Body() data: CreateVideoDto
     ): Promise<Video> {
-        return await this.videoService.createVideo(video, files.video[0], files.preview[0]);
+        return await this.videoService.createVideo(data, category_id, video);
     }
 
-    @Patch()
+    @Patch(":id")
     @UseGuards(IsAdminGuard)
     @UseGuards(IsAuthGuard)
-    public async updateVideo(@Query() { id }: UuidDto, @Body() updatedVideo: UpdateVideoDto): Promise<Video> {
+    public async updateVideo(@Param() { id }: UuidDto, @Body() updatedVideo: UpdateVideoDto): Promise<Video> {
         return await this.videoService.updateVideo(id, updatedVideo);
     }
 
-    @Patch(":type")
+    @Patch("file/:id")
     @UseGuards(IsAdminGuard)
     @UseGuards(IsAuthGuard)
     @UseInterceptors(FileInterceptor("file"))
-    public updateVideoFile(
-        @UploadedFile() file: Express.Multer.File,
-        @Query() { id, type }: UuidDto & { type: FileType }
-    ): void {
-        this.videoService.updateFile(id, type, file);
+    public updateVideoFile(@UploadedFile() file: Express.Multer.File, @Param() { id }: UuidDto): void {
+        this.videoService.updateFile(id, file);
     }
 
-    @Delete()
+    @Delete(":id")
     @UseGuards(IsAdminGuard)
     @UseGuards(IsAuthGuard)
-    public async removeVideo(@Query() { id }: UuidDto): Promise<void> {
+    public async removeVideo(@Param() { id }: UuidDto): Promise<void> {
         await this.videoService.deleteVideo(id);
     }
 }

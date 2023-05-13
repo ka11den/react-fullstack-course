@@ -12,12 +12,6 @@ export class Video {
     @Column({ nullable: true })
     description: string;
 
-    @Column()
-    video_extension: string;
-
-    @Column()
-    preview_extension: string;
-
     @Column({ default: true })
     is_visible: boolean;
 

@@ -19,7 +19,7 @@ export class CategoryController {
         return await this.categoryService.findAllCategories(page, size);
     }
 
-    @Get()
+    @Get(":id")
     @UseGuards(IsPayedGuard)
     @UseGuards(IsAuthGuard)
     public async findOne(@Param() { id }: UuidDto): Promise<Category> {

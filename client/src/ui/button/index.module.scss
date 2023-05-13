@@ -1,11 +1,12 @@
 .btn {
-    padding: 1rem;
-    font-size: 1em;
+    font-size: 16px;
     color: #F01A33;
+    cursor: pointer;
     background-color: transparent;
     border: #F01A33 2px solid;
-    border-radius: 15px;
-    transition: all .4s;
+    padding: 6px 12px 6px 12px;
+    border-radius: 6px;
+    transition: 0.25s;
 
     &:hover {
         color: #ffff;

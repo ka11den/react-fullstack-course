@@ -23,7 +23,7 @@ export function SigninForm() {
 
     useEffect(() => {
         isAuth && navigator("/");
-    }, [isAuth, navigator]);
+    }, [isAuth, navigator])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

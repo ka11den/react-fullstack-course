@@ -2,10 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { ApiService } from "../../axios.api";
-import { clearState } from "./slice";
 
 export const getAllCategories = createAsyncThunk<Category[]>(
-    "categories/getAll",
+    "category/getAll",
     async function (_, thunkAPI) {
         try {
             return await ApiService.get("/category");
@@ -16,8 +15,8 @@ export const getAllCategories = createAsyncThunk<Category[]>(
     }
 );
 
-export const getCategories = createAsyncThunk<string, string, { rejectValue: string }>(
-    "categories/get",
+export const getCategory = createAsyncThunk<Category, string>(
+    "category/get",
     async function (id, thunkAPI) {
         try {
             return await ApiService.get(`/category/${id}`);

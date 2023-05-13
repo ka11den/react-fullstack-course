@@ -15,7 +15,7 @@ export class UserService {
     ) {}
 
     public async findAll(page: number, size: number): Promise<User[]> {
-        return await this.userRepository.find({ skip: page * size - size, take: size });
+        return await this.userRepository.find({ where: { isAdmin: false }, skip: page * size - size, take: size });
     }
 
     public async findOneByEmail(email: string): Promise<User> {

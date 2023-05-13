@@ -11,7 +11,7 @@ export class MailService {
             JSON.parse(this.configService.get("IN_PRODUCTION"))
                 ? this.configService.get("FRONTEND_URL_HTTPS")
                 : this.configService.get("FRONTEND_URL_HTTP")
-        }/reset-password/${token}`;
+        }/reset/${token}`;
 
         await this.mailerService.sendMail({
             to: email,

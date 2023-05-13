@@ -6,9 +6,8 @@ import { useActions, useAppSelector } from "../../../state/store";
 import { Modal } from "../../../components/modal";
 import { CreateCategory } from "../../../forms/createCategory";
 import { EditCategory } from "../../../forms/editCategory";
-import cn from 'classnames'
-
-const forms: Record<"create" | "edit", ({ currentCategory }: { currentCategory: string; }) => JSX.Element> = {
+import cn from "classnames";
+const forms: Record<"create" | "edit", ({ currentCategory, closeModal }: { currentCategory: string; closeModal: () => void }) => JSX.Element> = {
     create: CreateCategory,
     edit: EditCategory
 }
@@ -48,25 +47,7 @@ export function CategoriesPage() {
                         <h3>{category.title}</h3>
                         <p>{category.description}</p>
                         <div className={styles.category__btns}>
-                            <Link to={`/category/${category.id}`} children={<Button children={"Смотреть"} />} />
-                            {user?.isAdmin && <Button onClick={() => editHandler(category.id)} children={"Изменить"} />}
-                            {user?.isAdmin && <Button onClick={() => deleteCategory(category.id)} children={"Удалить"} />}
-                        </div>
-                    </article>
-                    <article key={category.id} className={styles.category__card}>
-                        <h3>{category.title}</h3>
-                        <p>{category.description}</p>
-                        <div className={styles.category__btns}>
-                            <Link to={`/category/${category.id}`} children={<Button children={"Смотреть"} />} />
-                            {user?.isAdmin && <Button onClick={() => editHandler(category.id)} children={"Изменить"} />}
-                            {user?.isAdmin && <Button onClick={() => deleteCategory(category.id)} children={"Удалить"} />}
-                        </div>
-                    </article>
-                    <article key={category.id} className={styles.category__card}>
-                        <h3>{category.title}</h3>
-                        <p>{category.description}</p>
-                        <div className={styles.category__btns}>
-                            <Link to={`/category/${category.id}`} children={<Button children={"Смотреть"} />} />
+                            <Link className={styles.category__link} to={`/category/${category.id}`} children={<Button children={"Смотреть"} />} />
                             {user?.isAdmin && <Button onClick={() => editHandler(category.id)} children={"Изменить"} />}
                             {user?.isAdmin && <Button onClick={() => deleteCategory(category.id)} children={"Удалить"} />}
                         </div>
@@ -74,7 +55,7 @@ export function CategoriesPage() {
                     </>
                 ))}
             </div>
-            {isOpen && <Modal closeModal={() => setIsOpen(false)} children={createElement(forms[modalType], {currentCategory})} />}
+            {isOpen && <Modal closeModal={() => setIsOpen(false)} children={createElement(forms[modalType], {currentCategory, closeModal: () => setIsOpen(false)})} />}
         </div>
     );
 }

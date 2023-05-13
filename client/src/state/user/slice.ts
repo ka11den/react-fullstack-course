@@ -85,7 +85,56 @@ export const userSlice = createSlice({
                 state.isLoading = false;
                 state.isError = false;
                 state.isAuth = false;
-            });
+            })
+            .addCase(userActions.updateUser.pending, (state: UserState) => {
+                state.isLoading = true;
+            })
+            .addCase(userActions.updateUser.fulfilled, (state: UserState, action) => {
+                state.user = action.payload;
+                state.isSuccess = true;
+                state.isLoading = false;
+                state.isError = false;
+                state.isAuth = true;
+            })
+            .addCase(userActions.updateUser.rejected, (state: UserState) => {
+                state.user = null;
+                state.isSuccess = false;
+                state.isLoading = false;
+                state.isError = true;
+                state.isAuth = false;
+            })
+            .addCase(userActions.restoreAccaunt.pending, (state: UserState) => {
+                state.isLoading = true;
+            })
+            .addCase(userActions.restoreAccaunt.fulfilled, (state: UserState) => {
+                state.isSuccess = true;
+                state.isLoading = false;
+                state.isError = false;
+                state.isAuth = false;
+            })
+            .addCase(userActions.restoreAccaunt.rejected, (state: UserState) => {
+                state.user = null;
+                state.isSuccess = false;
+                state.isLoading = false;
+                state.isError = true;
+                state.isAuth = false;
+            })
+            .addCase(userActions.resetPassword.pending, (state: UserState) => {
+                state.isLoading = true;
+            })
+            .addCase(userActions.resetPassword.fulfilled, (state: UserState) => {
+                state.isSuccess = true;
+                state.isLoading = false;
+                state.isError = false;
+                state.isAuth = false;
+            })
+            .addCase(userActions.resetPassword.rejected, (state: UserState) => {
+                state.user = null;
+                state.isSuccess = false;
+                state.isLoading = false;
+                state.isError = true;
+                state.isAuth = false;
+            })
     }
 });
 

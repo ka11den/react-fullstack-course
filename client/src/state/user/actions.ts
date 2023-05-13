@@ -86,3 +86,30 @@ export const updatePassword = createAsyncThunk<User, UserAPI.UpdatePasswordForm>
     }
 );
 
+export const restoreAccaunt = createAsyncThunk<void, { email: string }>(
+    "user/restore",
+    async function (form, thunkAPI) {
+        try {
+            await ApiService.post("/restore", form);
+            toast.success("Ссылка дял восстановления отправлена на ваш email");
+        } catch (error) {
+            const message = ((error as AxiosError).response?.data as Error).message;
+            toast.error(message);
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);
+
+export const resetPassword = createAsyncThunk<void, { token: string, form: { password: string } }>(
+    "user/reset-password",
+    async function (data, thunkAPI) {
+        try {
+            await ApiService.post(`/reset-password/${data.token}`, data.form);
+            toast.success("Пароль ыл успешно сброшен");
+        } catch (error) {
+            const message = ((error as AxiosError).response?.data as Error).message;
+            toast.error(message);
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+);

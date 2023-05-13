@@ -5,18 +5,26 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import * as userActions from "./user/actions";
 import * as categoriesActions from "./categories/actions";
+import * as videosActions from "./videos/actions";
+import * as usersActions from "./users/actions";
 import { userSlice } from "./user/slice";
 import { categoriesSlice } from "./categories/slice";
+import { videosSlice } from "./videos/slice";
+import { usersSlice } from "./users/slice";
 
 export const combineActions = {
     ...userActions,
-    ...categoriesActions
+    ...categoriesActions,
+    ...videosActions,
+    ...usersActions
 };
 
 export const store = configureStore({
     reducer: combineReducers({
         user: userSlice.reducer,
-        categories: categoriesSlice.reducer
+        categories: categoriesSlice.reducer,
+        videos: videosSlice.reducer,
+        users: usersSlice.reducer
     })
 });
 

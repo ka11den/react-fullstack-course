@@ -35,41 +35,39 @@ export class VideoService {
         return await this.videoRepository.findOneBy({ id });
     }
 
-    public findOneFileById(id: string, type: FileType, res: Response): void {
-        const target = readdirSync(`./uploads/${type}s`).find((name) => name.startsWith(id));
+    public findOneFileById(id: string, res: Response): void {
+        const target = readdirSync("./uploads").find((name) => name.startsWith(id));
         if (target) {
-            res.sendFile(target, { root: `./uploads/${type}s` });
+            res.sendFile(target, { root: "./uploads" });
         } else {
             throw new NotFoundException("Файл не найден");
         }
     }
 
-    public async createVideo(
-        data: CreateVideoDto,
-        video: Express.Multer.File,
-        preview: Express.Multer.File
-    ): Promise<Video> {
-        if (Mimetype.video(video, ["mp4"]) && Mimetype.image(preview, ["jpeg", "png"])) {
+    public async createVideo(data: CreateVideoDto, category_id: string, video: Express.Multer.File): Promise<Video> {
+        if (Mimetype.video(video, ["mp4"])) {
             await this.isExist(data.title);
-            const category = await this.categoryService.findOneCategoryById(data.category_id),
+            const category = await this.categoryService.findOneCategoryById(category_id),
                 video_extension = video.mimetype.split("/")[1],
-                preview_extension = preview.mimetype.split("/")[1],
                 id = randomUUID(),
-                newVideo = this.videoRepository.create({ id, ...data, category, video_extension, preview_extension }),
+                newVideo = this.videoRepository.create({
+                    id,
+                    ...data,
+                    category
+                }),
                 result = await this.videoRepository.save(newVideo);
-            writeFileSync(`./uploads/videos/${id}.${video_extension}`, video.buffer);
-            writeFileSync(`./uploads/previews/${id}.${preview_extension}`, preview.buffer);
+            writeFileSync(`./uploads/${id}.${video_extension}`, video.buffer);
             return result;
         } else {
             throw new BadRequestException("Неверный тип файла");
         }
     }
 
-    public updateFile(id: string, type: FileType, video: Express.Multer.File) {
+    public updateFile(id: string, video: Express.Multer.File) {
         if (Mimetype.video(video, ["mp4"])) {
-            const target = readdirSync(`./uploads/${type}s`).find((name) => name.startsWith(id));
-            unlinkSync(`./uploads/${type}s/${target}`);
-            writeFileSync(`./uploads/${type}s/${id}.${video.mimetype.split("/")[1]}`, video.buffer);
+            const target = readdirSync("./uploads").find((name) => name.startsWith(id));
+            unlinkSync(`./uploads/${target}`);
+            writeFileSync(`./uploads/${id}.${video.mimetype.split("/")[1]}`, video.buffer);
         } else {
             throw new BadRequestException("Неверный тип файла");
         }
@@ -81,6 +79,8 @@ export class VideoService {
     }
 
     public async deleteVideo(id: string): Promise<void> {
+        const target = readdirSync("./uploads").find((name) => name.startsWith(id));
+        unlinkSync(`./uploads/${target}`);
         await this.videoRepository.delete(id);
     }
 }

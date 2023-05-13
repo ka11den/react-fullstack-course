@@ -9,13 +9,6 @@ import { EditUser } from "../../../forms/editUser";
 import { useActions, useAppSelector } from "../../../state/store";
 import { useNavigate } from "react-router";
 
-import avatar from "../../../assets/img/avatar.webp";
-
-const editForms: Record<"data" | "password", JSX.Element> = {
-    data: <EditUser />,
-    password: <EditPassword />
-}
-
 export function ProfilePage() {
     const navigator = useNavigate();
     const { user } = useAppSelector((state) => state.user);
@@ -23,6 +16,11 @@ export function ProfilePage() {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [modalType, setModalType] = useState<"data" | "password">("data");
+
+    const editForms: Record<"data" | "password", JSX.Element> = {
+        data: <EditUser closeModal={() => setIsOpen(false)} />,
+        password: <EditPassword closeModal={() => setIsOpen(false)} />
+    }
 
     function openModal(type: "data" | "password"): void {
         setIsOpen(true);
@@ -33,6 +31,7 @@ export function ProfilePage() {
         signout();
         navigator("/signin");
     }
+
   return (
       <section className={cn(styles.section, styles.section__account)}>
         <div className={cn(styles.account__container, styles.container)}>

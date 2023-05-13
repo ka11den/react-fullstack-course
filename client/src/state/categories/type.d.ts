@@ -5,6 +5,7 @@ type Category = {
 }
 
 type CategoriesState = {
+    category: Category | null;
     categories: Category[];
     isSuccess: boolean;
     isLoading: boolean;

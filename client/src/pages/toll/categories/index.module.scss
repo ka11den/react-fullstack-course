@@ -3,7 +3,6 @@
     margin-inline: 1.5rem;
 
     .section__title {
-        width: 1400px;
         margin-top: 1rem;
         margin-bottom: 1rem;
         font-size: 2em;
@@ -15,8 +14,20 @@
 
     .category__container {
         display: grid;
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(1, auto);
         gap: 1rem;
+    }
+
+    @media screen and (min-width: 800px) {
+        .category__container {
+            grid-template-columns: repeat(2, auto);
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        .category__container {
+            grid-template-columns: repeat(3, auto);
+        }
     }
 
     .category__card {
@@ -28,14 +39,23 @@
         background-color: black;
 
         .category__btns {
-            display: flex;
+            display: grid;
             gap: 1rem;
+
+            .category__link {
+                display: grid;
+            }
+        }
+
+        @media screen and (min-width: 800px) {
+            .category__btns {
+                display: flex;
+                gap: 1rem;
+            }
         }
     }
 
     @media screen and (min-width: 1400px) {
         margin: 0 auto;
     }
-
-
 }

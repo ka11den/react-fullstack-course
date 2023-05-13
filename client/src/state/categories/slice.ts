@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import * as categoriesActions from "./actions";
 
 const initialState: CategoriesState = {
+    category: null,
     categories: [],
     isSuccess: false,
     isLoading: false,
@@ -14,15 +15,33 @@ export const categoriesSlice = createSlice({
     initialState,
     reducers: {
         clearState(state) {
+            state.category = null;
             state.categories = [];
             state.isSuccess = false;
             state.isLoading = false;
             state.isError = false;
-            return state;
+        },
+        getCategory(state, { payload }: { payload: string }) {
+            state.category = state.categories.find((category) => category.id === payload) ?? null;
         }
     },
     extraReducers: (builder) => {
         builder
+            .addCase(categoriesActions.getCategory.pending, (state: CategoriesState) => {
+                state.isLoading = true;
+            })
+            .addCase(categoriesActions.getCategory.fulfilled, (state: CategoriesState, action) => {
+                state.category = action.payload;
+                state.isSuccess = true;
+                state.isLoading = false;
+                state.isError = false;
+            })
+            .addCase(categoriesActions.getCategory.rejected, (state: CategoriesState) => {
+                state.category = null;
+                state.isSuccess = false;
+                state.isLoading = false;
+                state.isError = true;
+            })
             .addCase(categoriesActions.getAllCategories.pending, (state: CategoriesState) => {
                 state.isLoading = true;
             })
@@ -76,11 +95,7 @@ export const categoriesSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(categoriesActions.deleteCategory.fulfilled, (state: CategoriesState, action) => {
-                state.categories = state.categories.filter((category) => {
-                    if (category.id !== action.payload) {
-                        return category;
-                    }
-                });
+                state.categories = state.categories.filter((category) => category.id !== action.payload);
                 state.isSuccess = true;
                 state.isLoading = false;
                 state.isError = false;
@@ -93,6 +108,6 @@ export const categoriesSlice = createSlice({
     }
 });
 
-export const { clearState } = categoriesSlice.actions;
+export const { clearState, getCategory } = categoriesSlice.actions;
 
 export const categoriesSelector = (state: { categories: CategoriesState }) => state.categories;

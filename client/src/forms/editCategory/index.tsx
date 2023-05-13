@@ -3,31 +3,27 @@ import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
 
 import styles from "./index.module.scss"
-import { useActions, useAppSelector } from "../../state/store";
-import { useEffect } from "react";
+import { useActions } from "../../state/store";
 
-export function EditCategory({ currentCategory }: { currentCategory : string }) {
-    const { categories } = useAppSelector((state) => state.categories);
+export function EditCategory({ currentCategory, closeModal }: { currentCategory: string; closeModal: () => void }) {
     const { updateCategory } = useActions();
 
     const {
         register,
         formState: { errors, isValid },
-        handleSubmit,
-        reset
+        handleSubmit
     } = useForm({ mode: "onChange" });
 
-    function onSubmit(form: any) {
-        updateCategory({ form, id: currentCategory });
+    function onSubmit(data: any) {
+        const form: Record<string, any> = {};
+        for (const key in data) {
+            if (data[key]) {
+                form[key] = data[key];
+            }
+        }
+        updateCategory({ form: form as CategoriesAPI.UpdateCategoryForm, id: currentCategory });
+        closeModal();
     }
-
-    useEffect(() => {
-        const current = categories.find((category: Category) => category.id === currentCategory)
-        current && reset({
-            title: current.title,
-            description: current.description
-        })
-    }, [])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -38,7 +34,6 @@ export function EditCategory({ currentCategory }: { currentCategory : string }) 
                 type="text"
                 errors={errors}
                 register={register("title", {
-                    required: "Название категории обязательно для заполнения",
                     minLength: {
                         value: 3,
                         message: "Название категории слишком короткое"
@@ -59,7 +54,6 @@ export function EditCategory({ currentCategory }: { currentCategory : string }) 
                 type="text"
                 errors={errors}
                 register={register("description", {
-                    required: "Описание категории обязательно для заполнения",
                     pattern: {
                         value: /^[a-zа-яё0-9 ]+$/i,
                         message: "Описание категории должно состоять только из букв и чисел"

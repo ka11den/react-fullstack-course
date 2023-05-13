@@ -4,6 +4,7 @@ type User = {
     email: string;
     isAdmin: boolean;
     isPaid: boolean;
+    isBanned: boolean;
 };
 
 type UserState = {

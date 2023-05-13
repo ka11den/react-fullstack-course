@@ -14,4 +14,4 @@ type FAQ = {
     title: string;
     answer: string;
     isActive: boolean;
-};
+}

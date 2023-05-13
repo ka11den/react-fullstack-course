@@ -10,9 +10,6 @@ export class CreateVideoDto {
     @IsString()
     @MaxLength(999)
     description: string;
-
-    @IsUUID()
-    category_id: string;
 }
 
 export class UpdateVideoDto {

@@ -5,6 +5,8 @@ namespace UI {
         type: string;
         register: any;
         errors: any;
+        accept?: string;
+        onChange?: any;
     };
 
     type Button = {

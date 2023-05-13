@@ -41,7 +41,7 @@ const unauthRoutes: CustomRoute[] = [
         path: "/oferta",
         element: <Oferta />
     }, {
-        title: "Политика конфидециальности",
+        title: "Политика конфидициальности",
         path: "/politics",
         element: <Politics />
     }

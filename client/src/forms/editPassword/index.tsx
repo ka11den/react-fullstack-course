@@ -3,13 +3,9 @@ import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
 
 import styles from "./index.module.scss"
-import { useActions, useAppSelector } from "../../state/store";
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useActions } from "../../state/store";
 
-export function EditPassword() {
-    const navigator = useNavigate();
-    const { isAuth } = useAppSelector((state) => state.user);
+export function EditPassword({ closeModal }: { closeModal: () => void}) {
     const { updatePassword } = useActions();
 
     const {
@@ -27,6 +23,7 @@ export function EditPassword() {
     function onSubmit(data: any) {
         delete data.confirmPassword;
         updatePassword(data);
+        closeModal()
     }
 
     return (

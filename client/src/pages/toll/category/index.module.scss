@@ -3,7 +3,6 @@
     margin-inline: 1.5rem;
 
     .section__title {
-        width: 1400px;
         margin-top: 1rem;
         margin-bottom: 1rem;
         font-size: 2em;
@@ -13,13 +12,12 @@
         margin-bottom: 1rem;
     }
 
-    @media screen and (min-width: 1400px) {
-        margin: 0 auto;
-    }
+
 
     .category__container {
         display: grid;
         grid-template-columns: repeat(3, max-content);
+        margin-top: 1rem;
         gap: 2rem;
     }
 
@@ -27,7 +25,7 @@
         padding: 1rem;
         border-radius: 15px;
         border: #F01A33 2px solid;
-        width: 250px;
+        width: 340px;
         color: #ffff;
         background-color: black;
 
@@ -41,5 +39,20 @@
             font-weight: 300;
             margin-bottom: 5rem;
         }
+
+
+        .category__btns {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .category__link {
+                display: grid;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1400px) {
+        margin: 0 auto;
     }
 }
