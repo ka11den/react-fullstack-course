@@ -15,11 +15,14 @@ export function VideoPage() {
 
     return (
         <div className={styles.container}>
-            <h2>Название: {video?.title}</h2>
-            <p>Описание: {video?.description}</p>
-            <video controls style={{height: "400px", width: "600px"}}>
-                <source src={`http://localhost:8000/video/file?id=${pathname.split("/").at(-1)}`} type="video/mp4" />
-            </video>
+            <h1 className={styles.section__title}>Видео</h1>
+            <div className={styles.video__content}>
+                <video className={styles.video__player} controls>
+                    <source src={`http://localhost:8000/video/file?id=${pathname.split("/").at(-1)}`} type="video/mp4" />
+                </video>
+                <h2 className={styles.video__title}>Название: {video?.title}</h2>
+                <p className={styles.video__desc}>Описание: {video?.description}</p>
+            </div>
         </div>
     );
 }

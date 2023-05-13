@@ -22,7 +22,7 @@ export function SigninForm() {
     }
 
     useEffect(() => {
-        isAuth && navigator("/");
+        isAuth && navigator("/profile");
     }, [isAuth, navigator])
 
     return (
