@@ -1,5 +1,6 @@
 .container {
     max-width: 1400px;
+    margin-top: 5rem;
     margin-inline: 1.5rem;
 
     .section__title {
@@ -23,7 +24,9 @@
         }
     }
 
-
+    @media screen and (max-width: 420px) {
+        margin-top: 12rem;
+    }
 
     @media screen and (min-width: 1400px) {
         margin: 0 auto;

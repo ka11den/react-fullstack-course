@@ -1,15 +1,21 @@
 .container {
     max-width: 1400px;
+    margin-top: 5rem;
+    min-height: calc(100vh - 110px);
     margin-inline: 1.5rem;
 
-    .section__title {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        font-size: 2em;
-    }
-
-    @media screen and (min-width: 1400px) {
-        margin: 0 auto;
+    .admin__content {
+        margin-top: 5rem;
+        display: grid;
+        background: radial-gradient(151.16% 381.72% at 98.57% 98.09%, #FF0026 0%, #000000 100%);
+        box-shadow: 0px 4px 30px 25px rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        padding: 2rem 2rem;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: 500;
+        text-align: center;
+        justify-content: center;
     }
 
     .titles {
@@ -18,34 +24,45 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-top: solid 1px black;
-        border-bottom: solid 1px black;
-    }
-
-    table {
-        width: 100%;
-    }
-
-    table,th, td {
-        border:1px solid black;
+        border-top: solid 2px rgb(255, 255, 255);
+        border-bottom: solid 2px rgb(255, 255, 255);
     }
     .list {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        margin-top: 1rem;
+        gap: 1rem;
         .user {
             width: 600px;
             display: flex;
             justify-content: space-between;
             .paid {
-                color: rgb(104, 186, 104);
+                color: rgb(109, 241, 109);
             }
             .not_paid {
-                color: rgb(204, 110, 110);
+                color: rgb(255, 255, 255);
             }
             .banned {
-                background-color: rgb(204, 110, 110);
+                color: #000000;
+                background-color: #fff;
+                font-size: 0.9em;
+                position: relative;
+                z-index: 1;
+                transition: all .4s;
+                border: none;
+
+                &:hover {
+                    filter: invert(1);
+                }
             }
         }
+    }
+
+    @media screen and (max-width: 420px) {
+        margin-top: 12rem;
+    }
+
+    @media screen and (min-width: 1000px) {
+        margin: 0 auto;
     }
 }

@@ -1,6 +1,9 @@
 .container {
+
     max-width: 1400px;
-    margin: 0 auto;
+    margin-inline: 1.5rem;
+    margin-top: 5rem;
+    min-height: calc(100vh - 110px);
 
     .section__title {
       margin-top: 1rem;
@@ -20,6 +23,10 @@
         margin-top: 1rem;
         justify-content: center;
         gap: 1rem;
+
+        @media screen and (max-width: 420px) {
+            display: grid;
+        }
       }
 
       h1 {
@@ -31,4 +38,13 @@
       }
     }
 
-  }
+
+
+    @media screen and (max-width: 420px) {
+        margin-top: 12rem;
+    }
+
+    @media screen and (min-width: 1000px) {
+        margin: 0 auto;
+    }
+}

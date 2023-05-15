@@ -1,6 +1,8 @@
 .container {
     max-width: 1400px;
     margin-inline: 1.5rem;
+    margin-top: 5rem;
+    min-height: calc(100vh - 110px);
 
     .section__title {
         margin-top: 1rem;
@@ -53,6 +55,10 @@
                 gap: 1rem;
             }
         }
+    }
+
+    @media screen and (max-width: 420px) {
+        margin-top: 12rem;
     }
 
     @media screen and (min-width: 1400px) {

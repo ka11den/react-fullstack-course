@@ -3,7 +3,6 @@ import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Outlet, useLocation } from "react-router-dom";
 import { useAppSelector } from "./state/store";
-import UserNav from "./components/userNav";
 
 export function Layout() {
     const { user } = useAppSelector((state) => state.user);
@@ -12,8 +11,7 @@ export function Layout() {
     return (
         <>
             <Header />
-            {/* {user?.isAdmin && /^\/admin\//.test(pathname) && <AdminNav />} */}
-            <UserNav />
+            {user?.isAdmin && /^\/admin\//.test(pathname) && <AdminNav />}
             <Outlet />
             <Footer />
         </>

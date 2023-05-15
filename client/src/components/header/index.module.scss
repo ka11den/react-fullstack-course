@@ -105,7 +105,9 @@
     }
 
   .right {
-    text-align: end;
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
     button {
       font-size: 16px;
       color: #F01A33;
@@ -115,11 +117,16 @@
       padding: 6px 12px 6px 12px;
       border-radius: 6px;
       transition: .25s;
+
       &:hover {
-          transition: .25s;
-          background-color: #F01A33;
-          color: #FFFFFF;
+        transition: .25s;
+        background-color: #F01A33;
+        color: #FFFFFF;
       }
+    }
+
+    @media screen and (max-width: 420px) {
+        display: grid;
     }
   }
 }

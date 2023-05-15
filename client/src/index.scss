@@ -11,6 +11,7 @@
     -ms-user-select: none;
     user-select: none;
     font-family: 'Inter', sans-serif;
+    text-decoration: none;
 }
 
 button {
@@ -22,12 +23,6 @@ li {
     list-style-type: none;
 }
 
-a {
-    text-decoration: none;
-}
-
-body {
-}
 *::-webkit-scrollbar {
     display: none;
 }

@@ -16,8 +16,6 @@ import { UsersPanelPage } from "./pages/admin/usersPanel";
 import { Layout } from "./layout";
 import { useEffect } from "react";
 import { useActions, useAppSelector } from "./state/store";
-import Oferta from "./pages/oferta";
-import Politics from "./pages/politics";
 
 const unauthRoutes: CustomRoute[] = [
     {
@@ -36,14 +34,6 @@ const unauthRoutes: CustomRoute[] = [
         title: "Сброс пароля",
         path: "/reset/:token",
         element: <ResetPasswordPage />
-    }, {
-        title: "Публичная оферта",
-        path: "/oferta",
-        element: <Oferta />
-    }, {
-        title: "Политика конфидициальности",
-        path: "/politics",
-        element: <Politics />
     }
 
 ]

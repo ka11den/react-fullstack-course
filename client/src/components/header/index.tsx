@@ -12,38 +12,38 @@ export function Header() {
     const { pathname } = useLocation();
 
     return (
-    <header className={styles.header}>
-      <div className={styles.content}>
-        <div className={styles.left}>
-          <Link to={"/"}>
-            <img src={avatar} alt="circle-photo" />
-            <div>
-              <p>Социальные инструменты</p>
-              <p className={styles.header__title}>от Максима Линдента</p>
+        <header className={styles.header}>
+            <div className={styles.content}>
+                <div className={styles.left}>
+                    <Link to={"/"}>
+                    <img src={avatar} alt="circle-photo" />
+                    <div>
+                        <p>Социальные инструменты</p>
+                        <p className={styles.header__title}>от Максима Линдента</p>
+                    </div>
+                    </Link>
+                </div>
+                <Link to="/">
+                    <div className={styles.center}>
+                    <h3>9,5</h3>
+                    <p>часов</p>
+                    <img src={play} alt="play-icon" />
+                    <p>видео-контента без воды</p>
+                    </div>
+                </Link>
+                <div className={styles.right}>{isAuth ? (<>
+                    {user?.isAdmin && <Link to="/admin/users" children={<Button className={/^\/admin\//.test(pathname) ? styles.current : ""}>Админка</Button>} />}
+                    {user?.isPaid || user?.isAdmin ? (
+                        <Link to="/categories" children={<Button className={/^\/(categor(y|ies)|video)/.test(pathname) ? styles.current : ""}>Контент</Button>} />
+                    ) : (
+                        <Link to="/payment" children={<Button className={pathname === "/payment" ? styles.current : ""}>Оплата</Button>} />
+                    )}
+                    <Link to="/profile" children={<Button className={pathname === "/profile" ? styles.current : ""}>Личный кабинет</Button>} />
+                    </>) : (
+                        <Link to="/signin" children={<Button className={pathname === "/signin" ? styles.current : ""}>Авторизация</Button>} />
+                    )}
+                </div>
             </div>
-          </Link>
-        </div>
-        <Link to="/">
-          <div className={styles.center}>
-            <h3>9,5</h3>
-            <p>часов</p>
-            <img src={play} alt="play-icon" />
-            <p>видео-контента без воды</p>
-          </div>
-        </Link>
-        <div className={styles.right}>
-          {isAuth ? (
-            <Link to={"/profile"}>
-              <button>Личный Кабинет</button>
-            </Link>
-          ) : (
-            <Link to={"/signin"}>
-              <button>Авторизация</button>
-            </Link>
-          )}
-        </div>
-        {/* <Link to="/payment" children={<Button className={pathname === "/payment" ? styles.current : ""}>Оплата</Button>} /> */}
-      </div>
-    </header>
+        </header>
     );
 }

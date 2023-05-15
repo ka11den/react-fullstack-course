@@ -72,11 +72,4 @@
       color: #000;
       opacity: 0.4;
     }
-
-    @media screen and (min-width: 1000px) {
-      .footer__container {
-        grid-template-columns: repeat(3, max-content);
-        justify-content: space-between;
-      }
-    }
-  }
+}

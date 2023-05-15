@@ -9,7 +9,13 @@
     transition: 0.25s;
 
     &:hover {
-        color: #ffff;
+        transition: .25s;
         background-color: #F01A33;
+        color: #FFFFFF;
     }
+}
+
+.disabled_btn {
+    background-color: rgb(204, 110, 110);
+    color: white;
 }

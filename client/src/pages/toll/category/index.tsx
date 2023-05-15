@@ -47,9 +47,9 @@ export function CategoryPage() {
             <h1 className={styles.section__title}>{category?.title}</h1>
             <p className={styles.section__desc}>{category?.description}</p>
             {user?.isAdmin && <Button onClick={createHandler} children={"Создать видеоролик"} />}
-            <div className={cn(styles.category__content, styles.category__container)}>
+            <div className={cn(videos.length >= 3 ? cn(styles.category__content, styles.category__container) : styles.category__content, styles.category__container__one)}>
             {videos.map((video: Video) => (
-                <article key={video.id} className={styles.category__card}>
+                <article key={video.id} className={cn(videos.length >= 3 ? cn(styles.category__card) : styles.category__card__one)}>
                     <h1 className={styles.category__num}>{video.title}</h1>
                     <h1 className={styles.category__title}>{video.description}</h1>
                     <div className={styles.category__btns}>
